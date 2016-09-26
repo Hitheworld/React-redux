@@ -14,6 +14,8 @@ import User from './test/tpl/User';
 import Home from './test/tpl/Home';
 import NoMatch from './test/tpl/NoMatch';
 
+import Root from './test/RedditAPI/containers/Root';
+
 import configureStore from './store/configureStore';
 
 const store = configureStore();
@@ -21,12 +23,7 @@ const store = configureStore();
 render(
 	<Provider store={store}>
 		<Router history={browserHistory}>
-			<Route path="/" component={Home}>
-				<Route path="about" component={About}/>
-				<Route path="users" component={Users}>
-					<Route path="/user/:userId" component={User}/>
-				</Route>
-				<Route path="*" component={NoMatch}/>
+			<Route path="/" component={Root}>
 			</Route>
 		</Router>
 	</Provider>
