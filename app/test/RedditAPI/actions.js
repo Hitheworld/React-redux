@@ -1,10 +1,11 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
 
-export const REQUEST_POSTS = 'REQUEST_POSTS'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT'
-export const INVALIDATE_SUBREDDIT  = 'INVALIDATE_SUBREDDIT '
+export const REQUEST_POSTS = 'REQUEST_POSTS';
+export const RECEIVE_POSTS = 'RECEIVE_POSTS';
+export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
+export const INVALIDATE_SUBREDDIT  = 'INVALIDATE_SUBREDDIT ';
 
+//选择
 export function selectSubreddit(subreddit) {
 	return {
 		type: SELECT_SUBREDDIT,
@@ -12,6 +13,7 @@ export function selectSubreddit(subreddit) {
 	}
 }
 
+//刷新
 export function invalidateSubreddit(subreddit) {
 	return {
 		type: INVALIDATE_SUBREDDIT ,
@@ -19,6 +21,7 @@ export function invalidateSubreddit(subreddit) {
 	}
 }
 
+//请求数据
 function requestPosts(subreddit) {
 	return {
 		type: REQUEST_POSTS,
@@ -26,6 +29,7 @@ function requestPosts(subreddit) {
 	}
 }
 
+//收到的数据
 function receivePosts(subreddit, json) {
 	return {
 		type: RECEIVE_POSTS,
@@ -35,6 +39,7 @@ function receivePosts(subreddit, json) {
 	}
 }
 
+//查询数据
 function fetchPosts(subreddit) {
 	return dispatch => {
 		dispatch(requestPosts(subreddit))
@@ -44,6 +49,7 @@ function fetchPosts(subreddit) {
 	}
 }
 
+//另外查询的数据
 function shouldFetchPosts(state, subreddit) {
 	const posts = state.postsBySubreddit[subreddit]
 	if (!posts) {
@@ -55,6 +61,7 @@ function shouldFetchPosts(state, subreddit) {
 	}
 }
 
+//根据须要更新数据
 export function fetchPostsIfNeeded(subreddit) {
 	return (dispatch, getState) => {
 		if (shouldFetchPosts(getState(), subreddit)) {

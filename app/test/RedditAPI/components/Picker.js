@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
 
 export default class Picker extends Component {
 	render() {
@@ -6,16 +6,16 @@ export default class Picker extends Component {
 
 		return (
 			<span>
-        <h1>{value}</h1>
-        <select onChange={e => onChange(e.target.value)}
-                value={value}>
-	        {options.map(option =>
-		        <option value={option} key={option}>
-			        {option}
-		        </option>)
-	        }
-        </select>
-      </span>
+		        <h1>{value}</h1>
+		        <select onChange={e => onChange(e.target.value)}
+		                value={value}>
+			        {options.map(option =>
+				        <option value={option} key={option}>
+					        {option}
+				        </option>)
+			        }
+		        </select>
+		      </span>
 		)
 	}
 }

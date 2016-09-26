@@ -1,8 +1,8 @@
-import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions'
-import Picker from '../components/Picker'
-import Posts from '../components/Posts'
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions';
+import Picker from '../components/Picker';
+import Posts from '../components/Posts';
 
 class AsyncApp extends Component {
 	constructor(props) {
@@ -40,32 +40,31 @@ class AsyncApp extends Component {
 		return (
 			<div>
 				<Picker value={selectedSubreddit}
-				        onChange={this.handleChange}
-				        options={[ 'reactjs', 'frontend' ]} />
+			        onChange={this.handleChange}
+			        options={[ 'reactjs', 'frontend' ]} />
 				<p>
 					{lastUpdated &&
-					<span>
-              Last updated at {new Date(lastUpdated).toLocaleTimeString()}.
-						{' '}
-            </span>
+						<span>
+                            Last updated at {new Date(lastUpdated).toLocaleTimeString()}.{' '}
+                        </span>
 					}
 					{!isFetching &&
-					<a href='#'
-					   onClick={this.handleRefreshClick}>
-						Refresh
-					</a>
+						<a href='#'
+						   onClick={this.handleRefreshClick}>
+							Refresh
+						</a>
 					}
 				</p>
 				{isFetching && posts.length === 0 &&
-				<h2>Loading...</h2>
+					<h2>Loading...</h2>
 				}
 				{!isFetching && posts.length === 0 &&
-				<h2>Empty.</h2>
+					<h2>Empty.</h2>
 				}
 				{posts.length > 0 &&
-				<div style={{ opacity: isFetching ? 0.5 : 1 }}>
-					<Posts posts={posts} />
-				</div>
+					<div style={{ opacity: isFetching ? 0.5 : 1 }}>
+						<Posts posts={posts} />
+					</div>
 				}
 			</div>
 		)
@@ -99,4 +98,4 @@ function mapStateToProps(state) {
 	}
 }
 
-export default connect(mapStateToProps)(AsyncApp)
+export default connect(mapStateToProps)(AsyncApp);
